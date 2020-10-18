@@ -36,7 +36,6 @@ export class Navbar extends Component {
   
 
   render() {
-    const {history} = this.props
     return (
       <div className="navbar clearfix">
         <div className="clearfix">
@@ -51,42 +50,42 @@ export class Navbar extends Component {
         </div>
         <ul className="nav-items">
           <Link
-            style={currentTab(history, "/")}
+            style={currentTab(this.props.history, "/")}
             className="nav-link"
             to="/"
           >
             <li>Home</li>
           </Link>
           <Link
-            style={currentTab(history, "/about")}
+            style={currentTab(this.props.history, "/about")}
             className="nav-link"
             to="/about"
           >
             <li>About Us</li>
           </Link>
           <Link
-            style={currentTab(history, "/resources")}
+            style={currentTab(this.props.history, "/resources")}
             className="nav-link"
             to="/resources"
           >
             <li>Resources</li>
           </Link>
           <Link
-            style={currentTab(history, "/career")}
+            style={currentTab(this.props.history, "/career")}
             className="nav-link"
             to="/career"
           >
             <li>Career</li>
           </Link>
           <Link
-            style={currentTab(history, "/team")}
+            style={currentTab(this.props.history, "/team")}
             className="nav-link"
             to="/team"
           >
             <li>Team</li>
           </Link>
           <Link
-            style={currentTab(history, "/contact")}
+            style={currentTab(this.props.history, "/contact")}
             className="nav-link"
             to="/contact"
           >
