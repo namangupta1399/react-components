@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./navbar.css";
 
@@ -12,8 +12,8 @@ const currentTab = (history, path) => {
   }
 };
 
-export class Navbar extends Component {
-  componentDidMount() {
+const Navbar = ({history}) => {
+  const preload = () => {
     const toggleBtn = document.querySelector(".navbar-toggler");
     toggleBtn.addEventListener("click", function () {
       if (document.querySelector(".nav-items").style.display === "none") {
@@ -33,68 +33,69 @@ export class Navbar extends Component {
       }
     });
   }
-  
 
-  render() {
-    return (
-      <div className="navbar clearfix">
-        <div className="clearfix">
-          <Link to="/" className="navbar-brand">
-            Company Logo
-          </Link>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
-            className="navbar-toggler"
-            alt=""
-          />
-        </div>
-        <ul className="nav-items">
-          <Link
-            style={currentTab(this.props.history, "/")}
-            className="nav-link"
-            to="/"
-          >
-            <li>Home</li>
-          </Link>
-          <Link
-            style={currentTab(this.props.history, "/about")}
-            className="nav-link"
-            to="/about"
-          >
-            <li>About Us</li>
-          </Link>
-          <Link
-            style={currentTab(this.props.history, "/resources")}
-            className="nav-link"
-            to="/resources"
-          >
-            <li>Resources</li>
-          </Link>
-          <Link
-            style={currentTab(this.props.history, "/career")}
-            className="nav-link"
-            to="/career"
-          >
-            <li>Career</li>
-          </Link>
-          <Link
-            style={currentTab(this.props.history, "/team")}
-            className="nav-link"
-            to="/team"
-          >
-            <li>Team</li>
-          </Link>
-          <Link
-            style={currentTab(this.props.history, "/contact")}
-            className="nav-link"
-            to="/contact"
-          >
-            <li>Contact Us</li>
-          </Link>
-        </ul>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    preload();
+  }, []);
+
+  return (
+  <div className="navbar clearfix">
+    <div className="clearfix">
+      <Link to="/" className="navbar-brand">
+        Company Logo
+      </Link>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
+        className="navbar-toggler"
+        alt=""
+      />
+    </div>
+    <ul className="nav-items">
+      <Link
+        style={currentTab(history, "/")}
+        className="nav-link"
+        to="/"
+      >
+        <li>Home</li>
+      </Link>
+      <Link
+        style={currentTab(history, "/about")}
+        className="nav-link"
+        to="/about"
+      >
+        <li>About Us</li>
+      </Link>
+      <Link
+        style={currentTab(history, "/resources")}
+        className="nav-link"
+        to="/resources"
+      >
+        <li>Resources</li>
+      </Link>
+      <Link
+        style={currentTab(history, "/career")}
+        className="nav-link"
+        to="/career"
+      >
+        <li>Career</li>
+      </Link>
+      <Link
+        style={currentTab(history, "/team")}
+        className="nav-link"
+        to="/team"
+      >
+        <li>Team</li>
+      </Link>
+      <Link
+        style={currentTab(history, "/contact")}
+        className="nav-link"
+        to="/contact"
+      >
+        <li>Contact Us</li>
+      </Link>
+    </ul>
+  </div>
+  );
+};
 
 export default withRouter(Navbar);
